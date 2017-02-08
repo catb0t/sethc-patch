@@ -23,11 +23,6 @@ bool wh_help () {
 }
 #pragma GCC diagnostic pop
 
-// move a file
-bool   wh_fmove (const char* const path);
-// remove a file
-bool wh_fremove (const char* const path);
-
 // perform the setch patch on a Windows installation directory
 bool   wh_do_patch (const char* const win_path);
 // revert the sethc patch
@@ -59,7 +54,7 @@ bool wh_try_autounpatch (void);
 #define WH_WIN_SETHC_BAK_FNAME WIN_SETHC_EXE_FNAME ## ".old"
 #define WH_WIN_SETHC_BAK_FQPN  WIN_SETHC_EXE_FQPN  ## ".old"
 
-/*static*/ const char auto_search_dirs[][40] = {
+/*static*/ const char wh_linux_search_dirs[][40] = {
   "/media/",
   "/mnt/",
   "/home/%s/mount/" // getlogin_r
@@ -130,3 +125,47 @@ int main(int argl, const char* const * const args) {
 
 }
 
+/*
+  win_path: name of a Windows installation root directory (C:\)
+
+  if win_path is not a Windows root or is NULL, then no action is taken and
+  false is returned.
+
+  if win_path is a Windows root,
+  * /Windows/System32/sethc.exe is renamed to frgup.rkr
+  * cmd.exe is copied to sethc.exe
+  * if it exists, access.cpl control panel item is renamed to npprff.pcy
+  * utilman.exe is renamed to hgvyzna.rkr
+*/
+bool   wh_do_patch (const char* const win_path) {
+  return false;
+}
+
+// revert the sethc patch
+bool wh_undo_patch (const char* const win_path) {
+  return false;
+}
+
+// perform the setch patch on each Windows installation in the list
+bool   wh_do_patch_each (const char* const * const paths) {
+  return false;
+}
+// revert the patch on each given Windows installation directory
+bool wh_undo_patch_each (const char* const * const paths) {
+  return false;
+}
+
+// is path a Windows installation root directory?
+bool wh_is_win_root (const char* const path) {
+  return false;
+}
+
+// attempt to automagically patch any Windows installations in /media and /mnt
+bool wh_try_autopatch (void) {
+  return false;
+}
+
+// attempt to automagically unpatch Windows roots in /media, /mnt
+bool wh_try_autounpatch (void) {
+  return false;
+}
